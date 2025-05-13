@@ -1,1 +1,1 @@
-bucket_name = "my-terraform-bucket-dev-2025"
+name_bucket = "rigo-terraform-dev-bucket-2025"
