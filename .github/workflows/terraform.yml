@@ -59,12 +59,11 @@ jobs:
                   id: terraform-plan
                   run: |
                     cd infra && \
-                    terraform workspace select dev && \
-                    terraform plan -var-file="./envs/dev/terraform.tfvars" -out="dev.plan"
+                    terraform workspace select ${{ inputs.enviroment }} || terraform workspace new ${{ inputs.enviroment }} && \
+                    terraform plan -var-file="./envs/${{ inputs.enviroment }}/terraform.tfvars" -out=plan.out
 
                 - name: Terraform Apply
                   id: terraform-apply
                   run: |
                     cd infra && \
-                    terraform workspace select ${{ inputs.enviroment }} && \
-                    terraform apply "${inputs.enviroment}.plan"
+                    terraform apply "plan.out"
