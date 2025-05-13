@@ -1,1 +1,1 @@
-bucket_name = "my-terraform-bucket-dev"
+bucket_name = "my-terraform-bucket-dev-2025"
