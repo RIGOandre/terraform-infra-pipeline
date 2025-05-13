@@ -60,10 +60,10 @@ jobs:
                   run: |
                     cd infra && \
                     terraform workspace select ${{ inputs.enviroment }} || terraform workspace new ${{ inputs.enviroment }} && \
-                    terraform plan -var-file="./envs/${{ inputs.enviroment }}/terraform.tfvars" -out=plan.out
+                    terraform plan -lock=false -var-file="./envs/${{ inputs.enviroment }}/terraform.tfvars" -out=plan.out
 
                 - name: Terraform Apply
                   id: terraform-apply
                   run: |
                     cd infra && \
-                    terraform apply "plan.out"
+                    terraform apply -lock=false "plan.out"
