@@ -1,0 +1,1 @@
+name_bucket = "rigo-terraform-dev-bucket-2025"
