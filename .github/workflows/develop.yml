@@ -1,0 +1,20 @@
+name: "DEV DEPLOYMENT"
+
+on:
+    push:
+        branches:
+            - develop
+
+permissions:
+    contents: read
+    id-token: write
+
+jobs:
+    terraform:
+        uses: ./.github/workflows/terraform.yml
+        with:
+            enviroment: dev
+            aws-assume-role-arn: "arn:aws:iam::237345505231:role/rigo-terraform-infra-pipeline"
+            aws-region: us-east-1
+            aws-statefile-s3-bucket: "rigo-terraform-infra-us-east-2"
+            aws-lock-dynamodb-table: "rigo-us-east-2-terraform-lock"
