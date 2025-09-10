@@ -1,2 +1,1 @@
 # terraform-infra-pipeline
-aws
